@@ -32,6 +32,8 @@ http://www.tomshardware.com/faq/id-2864547/manage-virtual-memory-pagefile-window
 
   Reasoning: the Windows memmap interface is sensitive to the maximum setting and leaving it at the default can cause errors when processing larger datasets.
   https://caiman.readthedocs.io/en/master/Installation.html#installing-caiman
+  
+  You will have to restart your computer after this step.
 
 3. Create virtual environment, activate, and install stuff:
 
