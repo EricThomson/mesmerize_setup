@@ -72,8 +72,10 @@ a. Run mesmerize
   i. You will have mesmerize gui open now. Go into `configuration-> system configuration`, and paste the working directory path you just created (`C:\Users\username\.mesmerize\working_dir`) into the `working_dir` text field.
 
   ii. Add the following to the console:
+  
       set MKL_NUM_THREADS=1
       set OPENBLAS_NUM_THREADS=1
+      
   Put those before `conda activate mesmerize` (and *uncomment* that line).
   iii. Set the number of threads to use (like half or so of the number of logical cores you have).
 
