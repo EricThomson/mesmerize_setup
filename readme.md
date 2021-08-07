@@ -76,13 +76,14 @@ a. Run mesmerize
       set MKL_NUM_THREADS=1
       set OPENBLAS_NUM_THREADS=1
       
-  Put those before `conda activate mesmerize` (and *uncomment* that line).
+  Put those before `conda activate mesmerize` (and *uncomment* that line).    
+  
   iii. Set the number of threads to use (like half or so of the number of logical cores you have).
 
   See relevant github issue if this is confusing at all:
   https://github.com/kushalkolar/MESmerize/issues/53
 
-3. fix the problem with border_px
+3. fix the problem with border_px    
 You need to make it so that bord_px doesn't screw up your plots. Open the following:
       C:\Users\lab_user\miniconda3\envs\mesmerize\Lib\site-packages\mesmerize\viewer\modules\cnmfe.py
 
