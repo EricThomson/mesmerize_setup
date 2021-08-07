@@ -35,21 +35,21 @@ http://www.tomshardware.com/faq/id-2864547/manage-virtual-memory-pagefile-window
   
   You will have to restart your computer after this step.
 
-3. Create virtual environment, activate, and install stuff:
+3. Create virtual environment, activate, and install stuff:    
 
-      conda update conda
-      conda install setuptools
-      conda create -n mesmerize python=3.6
-      conda activate mesmerize
+        conda update conda
+        conda install setuptools
+        conda create -n mesmerize python=3.6
+        conda activate mesmerize
 
-      conda install mamba -n mesmerize -c conda-forge
-      mamba install -c anaconda tensorflow-gpu=1.15 #takes several minutes
-      mamba install tensorflow-estimator=1.15    #probably not needed check first
-      mamba install caiman -c conda-forge  #takes a long time ~20 minutes or more
-      mamba install Cython
-      mamba install -c conda-forge tslearn=0.4.1 bottleneck=1.2 graphviz
-      pip install pywin32  # probably not needed
-      pip install mesmerize  # tadaaaa!
+        conda install mamba -n mesmerize -c conda-forge
+        mamba install -c anaconda tensorflow-gpu=1.15 #takes several minutes
+        mamba install tensorflow-estimator=1.15    #probably not needed check first
+        mamba install caiman -c conda-forge  #takes a long time ~20 minutes or more
+        mamba install Cython
+        mamba install -c conda-forge tslearn=0.4.1 bottleneck=1.2 graphviz
+        pip install pywin32  # probably not needed
+        pip install mesmerize  # tadaaaa!
 
 # C. Configure and setup finalize
 1. Set up directory    
