@@ -49,9 +49,8 @@ restart your computer after this step.
 Set up a directory where you will want to do your mesmerize stuff, preferably a place with *lots* of space (ideally more than a TB). It will be helpful to run mesmerize from there. Let's call this `mesmerize_path`
 
 2. Complete setup and configuration   
-3.  
+    
     a. Run mesmerize    
-     
      cd into `mesmerize_path` and run mesmerize with the command `mesmerize`. The first time you run it, 
      it will download a bunch of things and go through some final setup steps that can take quite a few minutes.
 
