@@ -25,10 +25,10 @@ https://github.com/kushalkolar/MESmerize
     Then close powershell, and open a new instance as normal (non-admin).
 
 2. Increase pagefile    
-This effectively gives you more RAM/memmap file size. It requires admin privileges so since you are doing step 1 already, might as well do this now too:    
-http://www.tomshardware.com/faq/id-2864547/manage-virtual-memory-pagefile-windows.html
-
-  You will have to restart your computer after this step.
+This effectively gives you more RAM/memmap file size. It requires admin privileges so since you are doing step 1 
+already you might as well do this now too. Instructions are here:
+http://www.tomshardware.com/faq/id-2864547/manage-virtual-memory-pagefile-windows.html. You will have to 
+restart your computer after this step.
 
 3. Create virtual environment, activate, and install stuff:    
 
@@ -76,7 +76,6 @@ a. Run mesmerize
 
 
 3. fix the problem with border_px    
-4. 
 You need to make it so that bord_px doesn't screw up your `corr_pnr` plots for cnmfe. Open the following:
       C:\Users\lab_user\miniconda3\envs\mesmerize\Lib\site-packages\mesmerize\viewer\modules\cnmfe.py
 Note if you didn't follow all the same instructions as above (e.g., you already had conda installed 
