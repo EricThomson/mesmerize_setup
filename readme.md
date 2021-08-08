@@ -10,21 +10,19 @@ https://github.com/kushalkolar/MESmerize
 # A. Initial stuff
 
 1. Install miniconda (select the option to add anaconda to the PATH environment during installation)
-2. Install Atom (not really necessary but useful).
-3. Open your anaconda prompt:
+2. Open your anaconda prompt:
 
     conda init powershell
 
-4. The rest of your steps will be in powershell, go open powershell don't do anything else in conda prompt.
+3. The rest of your steps will be in powershell, go open powershell don't do anything else in conda prompt. Your powershell should now open as a conda base virtual environment with `(base)` before the directory path.
 
 # B. Create virtual environment
-Note if computer doesn't have gpu replace tensorflow-gpu with tensorflow in the following.
 1. First change some settings in powershell, run as admin:    
 
     >Set-ExecutionPolicy RemoteSigned    
     Set-ExecutionPolicy Bypass -scope Process -Force
 
-    Then close powershell, and open as normal (non-admin).
+    Then close powershell, and open a new instance as normal (non-admin).
 
 2. Increase pagefile    
 This effectively gives you more RAM/memmap file size. It requires admin privileges so since you are doing step 1 already, might as well do this now too:    
@@ -40,24 +38,22 @@ http://www.tomshardware.com/faq/id-2864547/manage-virtual-memory-pagefile-window
         conda update conda
         conda install setuptools
         conda create -n mesmerize python=3.6
+        
         conda activate mesmerize
-
         conda install mamba -n mesmerize -c conda-forge
-        mamba install -c anaconda tensorflow-gpu=1.15 #takes several minutes
-        mamba install tensorflow-estimator=1.15    #probably not needed check first
+        mamba install -c anaconda tensorflow-gpu=1.15 # if you don't have an nvidia gpu just install tensorflow
         mamba install caiman -c conda-forge  #takes a long time ~20 minutes or more
         mamba install Cython
         mamba install -c conda-forge tslearn=0.4.1 bottleneck=1.2 graphviz
-        pip install pywin32  # probably not needed
         pip install mesmerize  # tadaaaa!
 
-# C. Configure and setup finalize
+# C. Configure and finalize the setup
 1. Set up directory    
 Set up a directory where you will want to do your mesmerize stuff, preferably a place with *lots* of space (ideally more than a TB). It will be helpful to run mesmerize from there. Let's call this `mesmerize_path`
 
 2. Complete setup and configuration    
 a. Run mesmerize    
- cd into `mesmerize_path` and run mesmerize with the command `mesmerize`. The first time you run it, it will download a bunch of things and go through some final setup steps that will take a few minutes.
+ cd into `mesmerize_path` and run mesmerize with the command `mesmerize`. The first time you run it, it will download a bunch of things and go through some final setup steps that can take quite a few minutes.
 
   b. Create a working directory    
   Once done, that setup step will have created the following `.mesmerize` directory:
@@ -69,7 +65,7 @@ a. Run mesmerize
   	 `C:\Users\username\.mesmerize\working_dir`
 
   c. System configuration    
-  i. You will have mesmerize gui open now. Go into `configuration-> system configuration`, and paste the working directory path you just created (`C:\Users\username\.mesmerize\working_dir`) into the `working_dir` text field.
+  i. You will have the mesmerize gui open now. Go into `configuration-> system configuration`, and paste the working directory path you just created (`C:\Users\username\.mesmerize\working_dir`) into the `working_dir` text field.
 
   ii. Add the following to the console:
   
@@ -80,12 +76,14 @@ a. Run mesmerize
   
   iii. Set the number of threads to use (like half or so of the number of logical cores you have).
 
-  See relevant github issue if this is confusing at all:
-  https://github.com/kushalkolar/MESmerize/issues/53
+
 
 3. fix the problem with border_px    
-You need to make it so that bord_px doesn't screw up your plots. Open the following:
+4. 
+You need to make it so that bord_px doesn't screw up your `corr_pnr` plots for cnmfe. Open the following:
       C:\Users\lab_user\miniconda3\envs\mesmerize\Lib\site-packages\mesmerize\viewer\modules\cnmfe.py
+Note if you didn't follow all the same instructions as above (e.g., you already had conda installed 
+on your system), the environment/packages may be in a different location. Just find that file within mesmerize.
 
       Replace this (around line 49)
 
