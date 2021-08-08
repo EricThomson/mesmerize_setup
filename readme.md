@@ -48,53 +48,57 @@ restart your computer after this step.
 1. Set up directory    
 Set up a directory where you will want to do your mesmerize stuff, preferably a place with *lots* of space (ideally more than a TB). It will be helpful to run mesmerize from there. Let's call this `mesmerize_path`
 
-2. Complete setup and configuration    
-a. Run mesmerize    
- cd into `mesmerize_path` and run mesmerize with the command `mesmerize`. The first time you run it, it will download a bunch of things and go through some final setup steps that can take quite a few minutes.
+2. Complete setup and configuration   
+3.  
+    a. Run mesmerize    
+     
+     cd into `mesmerize_path` and run mesmerize with the command `mesmerize`. The first time you run it, 
+     it will download a bunch of things and go through some final setup steps that can take quite a few minutes.
 
-  b. Create a working directory    
-  Once done, that setup step will have created the following `.mesmerize` directory:
+      b. Create a working directory    
+      Once done, that setup step will have created the following `.mesmerize` directory:
 
-      `C:/users/username/.mesmerize`
+          `C:/users/username/.mesmerize`
 
-  Create a new directory, `working_dir` in that subdirectory so you now have:
+      Create a new directory, `working_dir` in that subdirectory so you now have:
 
-  	 `C:\Users\username\.mesmerize\working_dir`
+         `C:\Users\username\.mesmerize\working_dir`
 
-  c. System configuration    
-  i. You will have the mesmerize gui open now. Go into `configuration-> system configuration`, and paste the working directory path you just created (`C:\Users\username\.mesmerize\working_dir`) into the `working_dir` text field.
+      c. System configuration    
+      i. You will have the mesmerize gui open now. Go into `configuration-> system configuration`, and paste the working directory path you just created (`C:\Users\username\.mesmerize\working_dir`) into the `working_dir` text field.
 
-  ii. Add the following to the console:
-  
-      set MKL_NUM_THREADS=1
-      set OPENBLAS_NUM_THREADS=1
-      
-  Put those before `conda activate mesmerize` (and *uncomment* that line).    
-  
-  iii. Set the number of threads to use (like half or so of the number of logical cores you have).
+      ii. Add the following to the console:
+
+          set MKL_NUM_THREADS=1
+          set OPENBLAS_NUM_THREADS=1
+
+      Put those before `conda activate mesmerize` (and *uncomment* that line).    
+
+      iii. Set the number of threads to use (like half or so of the number of logical cores you have).
 
 
 
 3. fix the problem with border_px    
-You need to make it so that bord_px doesn't screw up your `corr_pnr` plots for cnmfe. Open the following:
-      C:\Users\lab_user\miniconda3\envs\mesmerize\Lib\site-packages\mesmerize\viewer\modules\cnmfe.py
-Note if you didn't follow all the same instructions as above (e.g., you already had conda installed 
-on your system), the environment/packages may be in a different location. Just find that file within mesmerize.
 
-      Replace this (around line 49)
+    You need to make it so that bord_px doesn't screw up your `corr_pnr` plots for cnmfe. Open the following:
+          C:\Users\lab_user\miniconda3\envs\mesmerize\Lib\site-packages\mesmerize\viewer\modules\cnmfe.py
+    Note if you didn't follow all the same instructions as above (e.g., you already had conda installed 
+    on your system), the environment/packages may be in a different location. Just find that file within mesmerize.
 
-              try:
-                  bord_px = next(d for ix, d in enumerate(history_trace) if 'caiman_motion_correction' in d)['caiman_motion_correction']['bord_px']
-              except StopIteration:
+          Replace this (around line 49)
+
+                  try:
+                      bord_px = next(d for ix, d in enumerate(history_trace) if 'caiman_motion_correction' in d)['caiman_motion_correction']['bord_px']
+                  except StopIteration:
+                      bord_px = 0
+
+        With this:
+
                   bord_px = 0
 
-    With this:
+      Now this will just force border pix to be 0. :)
 
-              bord_px = 0
-
-  Now this will just force border pix to be 0. :)
-
-  Close mesmerize.
+      Close mesmerize.
 
 # D. Give it a test run!
 Create two new folders in `mesmerize_path`: `projects` and `data`. Drop a data file you want to analyze in the data file. In powershell, cd into `mesmerize_path` and start mesmerize and get going: create a new project, and start doing things. Just follow the video tutorials:
