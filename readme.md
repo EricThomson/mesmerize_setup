@@ -148,3 +148,9 @@ cnmfe:
 2. From mesmerize to Jupyter
 For saving and loading between mesmerize and jupyter, see:
 https://github.com/kushalkolar/MESmerize/blob/master/notebooks/demo_batch_ingestion.ipynb
+
+
+# Acknowledgments
+- Kushal Koler for the amazing Mesmerize package.
+- Caiman for providing support and the use of the sample data to test the installation on. 
+- Developed with the support from NIH Bioinformatics and the Neurobehavioral Core at NIEHS. Thanks to the many people there who were patient while I nailed down this install on their computers.  
