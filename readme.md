@@ -1,41 +1,45 @@
 # mesmerize installation instructions
-Getting mesmerize working on Windows:
+Instructions for installing Mesmerize on Windows. Roughly follows instructions at the web site:
 http://docs.mesmerizelab.org/en/master/user_guides/installation.html
 
-I install this fairly frequently, this is a recipe that works well even for machines without a lot of RAM. Use at your own risk!
+I install this fairly frequently, this is a recipe that works well even for machines without a lot of RAM.
 
-Mesmerize written by Kushal Kolar:
-https://github.com/kushalkolar/MESmerize
+
 
 # A. Initial stuff
+1. Install miniconda     
+Just follow the instructions here:
+https://docs.conda.io/en/latest/miniconda.html
+Select the option to add anaconda to the PATH environment during installation if you want to make life simpler. If you already have it installed (or anaconda), then skip this step.
 
-1. Install miniconda (select the option to add anaconda to the PATH environment during installation)
-2. Open your anaconda prompt:
+2. Initialize conda powershell    
+Open your anaconda prompt and initialize powershell support:
 
+    ```
     conda init powershell
+    ```
+Close your anaconda prompt, as *the rest of your steps will be in powershell*. You will notice when you open powershell now, you will have conda access (i.e., you will be in a conda base virtual environment with `(base)` before the directory path).
 
-3. The rest of your steps will be in powershell, go open powershell don't do anything else in conda prompt. Your powershell should now open as a conda base virtual environment with `(base)` before the directory path.
-
-# B. Create virtual environment
-1. First change some settings in powershell, run as admin:    
-
-    >Set-ExecutionPolicy RemoteSigned    
+3. Change some powershell policies    
+Run Powershell as admin and enter the following:
+```
+    Set-ExecutionPolicy RemoteSigned    
     Set-ExecutionPolicy Bypass -scope Process -Force
-
+```
     Then close powershell, and open a new instance as normal (non-admin).
 
-2. Increase pagefile    
-This effectively gives you more RAM/memmap file size. It requires admin privileges so since you are doing step 1 
-already you might as well do this now too. Instructions are here:
-http://www.tomshardware.com/faq/id-2864547/manage-virtual-memory-pagefile-windows.html. You will have to 
+4. Increase pagefile size       
+This effectively gives you more RAM/for when you run CNMF-E. It requires admin privileges so since you are at it, might as well. [Follow the instructions here](
+http://www.tomshardware.com/faq/id-2864547/manage-virtual-memory-pagefile-windows.html). I recommend 5GB-64GB range, if possible. You will have to
 restart your computer after this step.
 
-3. Create virtual environment, activate, and install stuff:    
+# B. Install and configure Mesmerize
+1. Create virtual environment, activate, and install stuff:    
 
         conda update conda
         conda install setuptools
         conda create -n mesmerize python=3.6
-        
+
         conda activate mesmerize
         conda install mamba -n mesmerize -c conda-forge
         mamba install -c anaconda tensorflow-gpu=1.15 # if you don't have an nvidia gpu just install tensorflow
@@ -44,65 +48,68 @@ restart your computer after this step.
         mamba install -c conda-forge tslearn=0.4.1 bottleneck=1.2 graphviz
         pip install mesmerize  # tadaaaa!
 
-# C. Configure and finalize the setup
-1. Set up directory    
+2. Create your mesmerize directory  
 Set up a directory where you will want to do your mesmerize stuff, preferably a place with *lots* of space (ideally more than a TB). It will be helpful to run mesmerize from there. Let's call this `mesmerize_path`
 
-2. Complete setup and configuration   
-    
-    a. Run mesmerize    
-     cd into `mesmerize_path` and run mesmerize with the command `mesmerize`. The first time you run it, 
-     it will download a bunch of things and go through some final setup steps that can take quite a few minutes.
+3. Complete setup and configuration   
+cd into `mesmerize_path` and run mesmerize with the command `mesmerize` from your virtual environment:
+```
+    cd mesmerize_path
+    conda activate mesmerize
+    mesmerize
+```
+The first time you run it, mesmerize will download a bunch of things and go through some final setup steps that can take quite a few minutes.
 
-      b. Create a working directory    
-      Once done, that setup step will have created the following `.mesmerize` directory:
+4. Create a working directory    
+Once done, that setup step will have created the following `.mesmerize` directory in your home directory:
 
           `C:/users/username/.mesmerize`
 
-      Create a new directory, `working_dir` in that subdirectory so you now have:
+Create a new directory, `working_dir` in that subdirectory so you now have:
 
          `C:\Users\username\.mesmerize\working_dir`
 
-      c. System configuration    
-      i. You will have the mesmerize gui open now. Go into `configuration-> system configuration`, and paste the working directory path you just created (`C:\Users\username\.mesmerize\working_dir`) into the `working_dir` text field.
+5. Finish setup configuration      
+You will have the mesmerize gui open now. Go into `configuration-> system configuration`, and paste the working directory path you just created (`C:\Users\username\.mesmerize\working_dir`) into the `working_dir` text field.
 
-      ii. Add the following to the console:
-
+Add the following to the console:
+```
           set MKL_NUM_THREADS=1
           set OPENBLAS_NUM_THREADS=1
+```
+Put those before `conda activate mesmerize` (and *uncomment* that line).    
 
-      Put those before `conda activate mesmerize` (and *uncomment* that line).    
+Set the number of threads to use (like half or so of the number of logical cores you have).
 
-      iii. Set the number of threads to use (like half or so of the number of logical cores you have).
+6. Fix the `border_px` problem
 
+You need to make it so that bord_px doesn't screw up your `corr_pnr` plots for cnmfe. Open the following:
+      C:\Users\lab_user\miniconda3\envs\mesmerize\Lib\site-packages\mesmerize\viewer\modules\cnmfe.py
+(Note if already had conda installed
+on your system in Step A above, then the environment/packages may be in a different location: just find the above file and open it).  
 
+Replace this (around line 49)
+```
+        try:
+            bord_px = next(d for ix, d in enumerate(history_trace) if 'caiman_motion_correction' in d)['caiman_motion_correction']['bord_px']
+        except StopIteration:
+            bord_px = 0
+```
+With this:
+```
+        bord_px = 0
+```
+Now this will just force border pix to be 0, and you won't have any funky artifacts.
 
-3. fix the problem with border_px    
-
-    You need to make it so that bord_px doesn't screw up your `corr_pnr` plots for cnmfe. Open the following:
-          C:\Users\lab_user\miniconda3\envs\mesmerize\Lib\site-packages\mesmerize\viewer\modules\cnmfe.py
-    Note if you didn't follow all the same instructions as above (e.g., you already had conda installed 
-    on your system), the environment/packages may be in a different location. Just find that file within mesmerize.
-
-          Replace this (around line 49)
-
-                  try:
-                      bord_px = next(d for ix, d in enumerate(history_trace) if 'caiman_motion_correction' in d)['caiman_motion_correction']['bord_px']
-                  except StopIteration:
-                      bord_px = 0
-
-        With this:
-
-                  bord_px = 0
-
-      Now this will just force border pix to be 0. :)
-
-      Close mesmerize.
+Close mesmerize. It is now configured and ready to run!
 
 # D. Give it a test run!
-Create two new folders in `mesmerize_path`: `projects` and `data`. Drop a data file you want to analyze in the data file. In powershell, cd into `mesmerize_path` and start mesmerize and get going: create a new project, and start doing things. Just follow the video tutorials:
+Create two new folders in `mesmerize_path`:
+    cd mesmerize_path
+    mkdir projects
+    mkdir data
+Drop a data file you want to analyze in the data file. In powershell, cd into `mesmerize_path` and start mesmerize and get going: create a new project, and start doing things. Just follow the video tutorials:
 https://www.youtube.com/playlist?list=PLgofWiw2s4REPxH8bx8wZo_6ca435OKqg
-
 
 ## Things to do:
 - Load movie
