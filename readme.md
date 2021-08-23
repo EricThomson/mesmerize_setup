@@ -26,11 +26,13 @@ Run Powershell as admin and enter the following:
     Set-ExecutionPolicy RemoteSigned    
     Set-ExecutionPolicy Bypass -scope Process -Force
 ```
-    Then close powershell, and open a new instance as normal (non-admin).
+Then close powershell, and open a new instance as normal (non-admin).
 
 4. Increase pagefile size       
-This effectively gives you more RAM/for when you run CNMF-E. It requires admin privileges so since you are at it, might as well. [Follow the instructions here](
-http://www.tomshardware.com/faq/id-2864547/manage-virtual-memory-pagefile-windows.html). The recommended minimum is 1.5x your actual RAM, and I recommend (at least) 64GB for the top value, if possible. If you already have more than 64GB of RAM, then I am not 100% sure this step is needed: check the settings to see what your values are. For such machines, I have tried setting it to 64-128GB, but if it is already in that range you are problably fine. Note you will have to restart your computer after this step.
+(Again this is for Windows). This step effectively gives you more RAM/for when you run CNMF-E. [Follow the instructions here](
+http://www.tomshardware.com/faq/id-2864547/manage-virtual-memory-pagefile-windows.html). The recommended minimum pagefile size is 1.5x your actual RAM, and I recommend (at least) 64GB for the top value, if possible.  Note you will have to restart your computer after this step.
+
+What if you already have more than 64GB of RAM? Then I am not 100% sure this step is needed. For such machines, then I'd suggest skipping this step, and coming back to it only if you hit problems with RAM/out of memory errors, and try setting it to 64GB-128GB if you can (though frankly this is a rule of thumb that depends on how much RAM you have: I am not an expert on this we might want to talk to the caiman people about this at some point). 
 
 # B. Install and configure Mesmerize
 1. Create virtual environment, activate, and install stuff:    
