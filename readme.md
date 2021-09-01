@@ -35,7 +35,7 @@ http://www.tomshardware.com/faq/id-2864547/manage-virtual-memory-pagefile-window
 What if you already have more than 64GB of RAM? Then I am not 100% sure this step is needed. For such machines, then I'd suggest skipping this step, and coming back to it only if you hit problems with RAM/out of memory errors, and try setting it to 64GB-128GB if you can (though frankly this is a rule of thumb that depends on how much RAM you have: I am not an expert on this we might want to talk to the caiman people about this at some point). 
 
 # B. Install and configure Mesmerize
-1. Create virtual environment, activate, and install stuff:    
+1. Create virtual environment, activate, and install stuff (all in powershell):    
 
         conda update conda
         conda install setuptools
