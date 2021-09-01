@@ -1,5 +1,5 @@
 # mesmerize installation instructions
-Instructions for installing Mesmerize on Windows. Roughly follows instructions at the web site:
+Recipe I use when installing Mesmerize on Windows. Basically follows instructions at the Mesmerize web site:
 http://docs.mesmerizelab.org/en/master/user_guides/installation.html
 
 I install this fairly frequently, this is a recipe that works well even for machines without a lot of RAM.
