@@ -85,7 +85,7 @@ Set the number of threads to use (like half or so of the number of logical cores
 6. Fix the `border_px` problem
 
 You need to make it so that bord_px doesn't screw up your `corr_pnr` plots for cnmfe. Open the following:
-      C:\Users\lab_user\miniconda3\envs\mesmerize\Lib\site-packages\mesmerize\viewer\modules\cnmfe.py
+      C:\Users\username\miniconda3\envs\mesmerize\Lib\site-packages\mesmerize\viewer\modules\cnmfe.py
 (Note if already had conda installed
 on your system in Step A above, then the environment/packages may be in a different location: just find the above file and open it).  
 
