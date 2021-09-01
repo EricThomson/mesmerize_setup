@@ -30,7 +30,7 @@ Then close powershell, and open a new instance as normal (non-admin).
 
 4. Increase pagefile size       
 (Again this is for Windows). This step effectively gives you more RAM/for when you run CNMF-E. [Follow the instructions here](
-http://www.tomshardware.com/faq/id-2864547/manage-virtual-memory-pagefile-windows.html). The recommended minimum pagefile size is 1.5x your actual RAM, and I recommend (at least) 64GB for the top value, if possible.  Note you will have to restart your computer after this step.
+http://www.tomshardware.com/faq/id-2864547/manage-virtual-memory-pagefile-windows.html). The recommended minimum pagefile size is 1.5x your actual RAM, and I recommend (at least) 64GB for the maximum value, if your computer will allow it.  Note you will have to restart your computer after this step.
 
 What if you already have more than 64GB of RAM? Then I am not 100% sure this step is needed. For such machines, then I'd suggest skipping this step, and coming back to it only if you hit problems with RAM/out of memory errors, and try setting it to 64GB-128GB if you can (though frankly this is a rule of thumb that depends on how much RAM you have: I am not an expert on this we might want to talk to the caiman people about this at some point). 
 
