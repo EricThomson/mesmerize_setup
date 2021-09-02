@@ -106,13 +106,7 @@ Now this will just force border pix to be 0, and you won't have any funky artifa
 Close mesmerize. It is now configured and ready to run!
 
 # D. Give it a test run!
-Create two new folders in `mesmerize_path`:    
-```
-    cd mesmerize_path
-    mkdir projects
-    mkdir data
-```
-Drop a data file you want to analyze in the data file. In powershell, cd into `mesmerize_path` and start mesmerize and get going: create a new project, and start doing things. Just follow the video tutorials:
+In powershell, cd into `mesmerize_path` and start mesmerize and get going: create a new project, and start doing things (presumably you have some test data you want to play with). Just follow the video tutorials:    
 https://www.youtube.com/playlist?list=PLgofWiw2s4REPxH8bx8wZo_6ca435OKqg
 
 ## Things to do:
