@@ -84,10 +84,11 @@ Set the number of threads to use (like half or so of the number of logical cores
 
 6. Fix the `border_px` problem
 
-You need to make it so that bord_px doesn't screw up your `corr_pnr` plots for cnmfe. Open the following:
+You need to make it so that bord_px doesn't screw up your `corr_pnr` plots for cnmfe. Open the following:    
+
       C:\Users\username\miniconda3\envs\mesmerize\Lib\site-packages\mesmerize\viewer\modules\cnmfe.py
-(Note if already had conda installed
-on your system in Step A above, then the environment/packages may be in a different location: just find the above file and open it).  
+      
+(Note if already had conda installed on your system in Step A above, then the environment/packages may be in a different location: just find the above file and open it).  
 
 Replace this (around line 49)
 ```
@@ -105,10 +106,12 @@ Now this will just force border pix to be 0, and you won't have any funky artifa
 Close mesmerize. It is now configured and ready to run!
 
 # D. Give it a test run!
-Create two new folders in `mesmerize_path`:
+Create two new folders in `mesmerize_path`:    
+```
     cd mesmerize_path
     mkdir projects
     mkdir data
+```
 Drop a data file you want to analyze in the data file. In powershell, cd into `mesmerize_path` and start mesmerize and get going: create a new project, and start doing things. Just follow the video tutorials:
 https://www.youtube.com/playlist?list=PLgofWiw2s4REPxH8bx8wZo_6ca435OKqg
 
