@@ -26,7 +26,7 @@ Run Powershell as admin and enter the following:
     Set-ExecutionPolicy RemoteSigned    
     Set-ExecutionPolicy Bypass -scope Process -Force
 ```
-Then close powershell, and open a new instance as normal (non-admin).
+Then close powershell.
 
 4. Increase pagefile size       
 (Again this is for Windows). This step effectively gives you more RAM/for when you run CNMF-E. [Follow the instructions here](
@@ -35,7 +35,7 @@ http://www.tomshardware.com/faq/id-2864547/manage-virtual-memory-pagefile-window
 What if you already have more than 64GB of RAM? Then I am not 100% sure this step is needed. For such machines, then I'd suggest skipping this step, and coming back to it only if you hit problems with RAM/out of memory errors, and try setting it to 64GB-128GB if you can (though frankly this is a rule of thumb that depends on how much RAM you have: I am not an expert on this we might want to talk to the caiman people about this at some point). 
 
 # B. Install and configure Mesmerize
-1. Create virtual environment, activate, and install stuff (all in powershell):    
+1. Create virtual environment, activate, and install stuff (do the following all in powershell):    
 
         conda update conda
         conda install setuptools
@@ -44,7 +44,7 @@ What if you already have more than 64GB of RAM? Then I am not 100% sure this ste
         conda activate mesmerize
         conda install mamba -n mesmerize -c conda-forge
         mamba install -c anaconda tensorflow-gpu=1.15 # if you don't have an nvidia gpu just install tensorflow
-        mamba install caiman -c conda-forge  #takes a long time ~20 minutes or more
+        mamba install caiman -c conda-forge  #can take a long time ~20 minutes sometimes
         mamba install Cython
         mamba install -c conda-forge tslearn=0.4.1 bottleneck=1.2 graphviz
         pip install mesmerize  # tadaaaa!
