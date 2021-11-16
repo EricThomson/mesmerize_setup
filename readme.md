@@ -18,9 +18,11 @@ Open your anaconda prompt and initialize Windows Powershell support:
     ```
     conda init powershell
     ```
-Close your anaconda prompt, as *the rest of your steps will be in Windows Powershell*. You will notice when you open Windows Powershell now, you will have conda access (i.e., you will be in a conda base virtual environment with `(base)` before the directory path).
+Close your anaconda prompt, as **the rest of your steps will be in Windows Powershell**. You will notice when you open Windows Powershell now, you will have conda access (i.e., you will be in a conda base virtual environment with `(base)` before the directory path).
 
 3. Change some powershell policies    
+Plese note again from here on out, you will not be doing anything else from the Conda prompt: everything else will be in Windows Powershell. 
+
 Run Windows Powershell as admin and enter the following:
 ```
     Set-ExecutionPolicy RemoteSigned    
