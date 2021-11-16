@@ -12,7 +12,7 @@ Just follow the instructions here:
 https://docs.conda.io/en/latest/miniconda.html
 Select the option to add anaconda to the PATH environment during installation if you want to make life simpler. If you already have it installed (or anaconda), then skip this step.
 
-2. Initialize powershell support    
+2. Initialize conda support for Windows Powershell     
 Open your anaconda prompt and initialize Windows Powershell support:
 
     ```
