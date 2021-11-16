@@ -12,16 +12,16 @@ Just follow the instructions here:
 https://docs.conda.io/en/latest/miniconda.html
 Select the option to add anaconda to the PATH environment during installation if you want to make life simpler. If you already have it installed (or anaconda), then skip this step.
 
-2. Initialize conda powershell    
-Open your anaconda prompt and initialize powershell support:
+2. Initialize powershell support
+Open your anaconda prompt and initialize Windows Powershell support:
 
     ```
     conda init powershell
     ```
-Close your anaconda prompt, as *the rest of your steps will be in powershell*. You will notice when you open powershell now, you will have conda access (i.e., you will be in a conda base virtual environment with `(base)` before the directory path).
+Close your anaconda prompt, as *the rest of your steps will be in powershell*. You will notice when you open Windows Powershell now, you will have conda access (i.e., you will be in a conda base virtual environment with `(base)` before the directory path).
 
 3. Change some powershell policies    
-Run Powershell as admin and enter the following:
+Run Windows Powershell as admin and enter the following:
 ```
     Set-ExecutionPolicy RemoteSigned    
     Set-ExecutionPolicy Bypass -scope Process -Force
