@@ -51,6 +51,13 @@ What if you already have more than 64GB of RAM? Then I am not 100% sure this ste
         mamba install -c conda-forge tslearn=0.4.1 bottleneck=1.2 graphviz
         pip install mesmerize  # tadaaaa!
 
+Note: periodically during the install I will enter the following commands:
+
+    conda clean --all
+    conda update --all 
+
+This can help avoid errors during the install. If you get a weird `CobberError` during the installation, then definitely run those commands. 
+
 2. Create your mesmerize directory  
 Set up a directory where you will want to do your mesmerize stuff, preferably a place with *lots* of space (ideally more than a TB). It will be helpful to run mesmerize from there. Let's call this `mesmerize_path`
 
