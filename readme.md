@@ -1,9 +1,8 @@
 # mesmerize installation instructions
-Recipe I use when installing Mesmerize on Windows. Basically follows instructions at the Mesmerize web site:
+Recipe I use when installing Mesmerize on Windows. I install this fairly frequently, this is a recipe that works well even for machines without a lot of RAM.
+
+Note if you are on a Mac or Linux, just follow the instructions at the Mesmerize site for your OS:        
 http://docs.mesmerizelab.org/en/master/user_guides/installation.html
-
-I install this fairly frequently, this is a recipe that works well even for machines without a lot of RAM.
-
 
 
 # A. Initial stuff
